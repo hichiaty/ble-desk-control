@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLE Desk Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>BLE Desk Control</h1>
+
+    <button id="connectButton">Connect to Desk</button>
+    <button id="disconnectButton" disabled>Disconnect</button>
+
+    <div id="controls" style="display: none;">
+        <button id="upButton">Up</button>
+        <button id="downButton">Down</button>
+    </div>
+
+    <div id="statusMessages">
+        <p>Status: Not Connected</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
