@@ -142,15 +142,26 @@ upButton.addEventListener('mousedown', () => {
 });
 upButton.addEventListener('mouseup', () => {
     // sendCommand(CMD_STOP);
-    log('Up Button: Mouse Up');
+    log('Up Button: Mouse Up (STOP would be sent)');
 });
 upButton.addEventListener('mouseleave', () => {
-    if (bluetoothDevice && bluetoothDevice.gatt && bluetoothDevice.gatt.connected) {
-        // sendCommand(CMD_STOP);
-        log('Up Button: Mouse Leave (STOP would be sent)');
-    } else {
-        log('Up Button: Mouse Leave (not connected)');
-    }
+    // sendCommand(CMD_STOP);
+    log('Up Button: Mouse Leave (STOP would be sent if active)');
+});
+upButton.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevents firing mouse events as well on some devices
+    // sendCommand(CMD_UP);
+    log('Up Button: Touch Start');
+});
+upButton.addEventListener('touchend', (event) => {
+    event.preventDefault();
+    // sendCommand(CMD_STOP);
+    log('Up Button: Touch End (STOP would be sent)');
+});
+upButton.addEventListener('touchcancel', (event) => {
+    event.preventDefault();
+    // sendCommand(CMD_STOP);
+    log('Up Button: Touch Cancel (STOP would be sent)');
 });
 
 // Event listeners for Down button
@@ -160,15 +171,25 @@ downButton.addEventListener('mousedown', () => {
 });
 downButton.addEventListener('mouseup', () => {
     // sendCommand(CMD_STOP);
-    log('Down Button: Mouse Up');
+    log('Down Button: Mouse Up (STOP would be sent)');
 });
 downButton.addEventListener('mouseleave', () => {
-    if (bluetoothDevice && bluetoothDevice.gatt && bluetoothDevice.gatt.connected) {
-        // sendCommand(CMD_STOP);
-        log('Down Button: Mouse Leave (STOP would be sent)');
-    } else {
-        log('Down Button: Mouse Leave (not connected)');
-    }
+    log('Down Button: Mouse Leave (STOP would be sent if active)');
+});
+downButton.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    // sendCommand(CMD_DOWN);
+    log('Down Button: Touch Start');
+});
+downButton.addEventListener('touchend', (event) => {
+    event.preventDefault();
+    // sendCommand(CMD_STOP);
+    log('Down Button: Touch End (STOP would be sent)');
+});
+downButton.addEventListener('touchcancel', (event) => {
+    event.preventDefault();
+    // sendCommand(CMD_STOP);
+    log('Down Button: Touch Cancel (STOP would be sent)');
 });
 
-log('Page loaded. Ready to connect. Command sending is currently disabled for logging mouse events.');
+log('Page loaded. Ready to connect. Command sending is currently disabled for logging mouse/touch events.');
