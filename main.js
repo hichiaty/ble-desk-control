@@ -14,9 +14,9 @@ const NUS_RX_CHARACTERISTIC_UUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e'; // Th
 const NUS_TX_CHARACTERISTIC_UUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e'; // The one we can read/notify from
 
 // Define command strings - customize as needed
-const CMD_UP = 'UP';
-const CMD_DOWN = 'DOWN';
-const CMD_STOP = 'STOP';
+const CMD_UP = 'u';
+const CMD_DOWN = 'd';
+const CMD_STOP = 's';
 
 function log(message) {
     const p = document.createElement('p');
@@ -104,14 +104,6 @@ async function disconnect() {
     }
 }
 
-// function handleNotifications(event) {
-//     let value = event.target.value;
-//     let a = [];
-//     for (let i = 0; i < value.byteLength; i++) {
-//         a.push(String.fromCharCode(value.getUint8(i)));
-//     }
-//     log('Received: ' + a.join(''));
-// }
 
 async function sendCommand(command) {
     if (!nusRxCharacteristic) {
@@ -137,59 +129,59 @@ disconnectButton.addEventListener('click', disconnect);
 
 // Event listeners for Up button
 upButton.addEventListener('mousedown', () => {
-    // sendCommand(CMD_UP);
+    sendCommand(CMD_UP);
     log('Up Button: Mouse Down');
 });
 upButton.addEventListener('mouseup', () => {
-    // sendCommand(CMD_STOP);
-    log('Up Button: Mouse Up (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Up Button: Mouse Up');
 });
 upButton.addEventListener('mouseleave', () => {
-    // sendCommand(CMD_STOP);
-    log('Up Button: Mouse Leave (STOP would be sent if active)');
+    sendCommand(CMD_STOP);
+    log('Up Button: Mouse Leave ');
 });
 upButton.addEventListener('touchstart', (event) => {
     event.preventDefault(); // Prevents firing mouse events as well on some devices
-    // sendCommand(CMD_UP);
+    sendCommand(CMD_UP);
     log('Up Button: Touch Start');
 });
 upButton.addEventListener('touchend', (event) => {
     event.preventDefault();
-    // sendCommand(CMD_STOP);
-    log('Up Button: Touch End (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Up Button: Touch End');
 });
 upButton.addEventListener('touchcancel', (event) => {
     event.preventDefault();
-    // sendCommand(CMD_STOP);
-    log('Up Button: Touch Cancel (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Up Button: Touch Cancel');
 });
 
 // Event listeners for Down button
 downButton.addEventListener('mousedown', () => {
-    // sendCommand(CMD_DOWN);
+    sendCommand(CMD_DOWN);
     log('Down Button: Mouse Down');
 });
 downButton.addEventListener('mouseup', () => {
-    // sendCommand(CMD_STOP);
-    log('Down Button: Mouse Up (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Down Button: Mouse Up');
 });
 downButton.addEventListener('mouseleave', () => {
-    log('Down Button: Mouse Leave (STOP would be sent if active)');
+    log('Down Button: Mouse Leave');
 });
 downButton.addEventListener('touchstart', (event) => {
     event.preventDefault();
-    // sendCommand(CMD_DOWN);
+    sendCommand(CMD_DOWN);
     log('Down Button: Touch Start');
 });
 downButton.addEventListener('touchend', (event) => {
     event.preventDefault();
-    // sendCommand(CMD_STOP);
-    log('Down Button: Touch End (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Down Button: Touch End');
 });
 downButton.addEventListener('touchcancel', (event) => {
     event.preventDefault();
-    // sendCommand(CMD_STOP);
-    log('Down Button: Touch Cancel (STOP would be sent)');
+    sendCommand(CMD_STOP);
+    log('Down Button: Touch Cancel');
 });
 
-log('Page loaded. Ready to connect. Command sending is currently disabled for logging mouse/touch events.');
+log('Page loaded. Ready to connect. ');
